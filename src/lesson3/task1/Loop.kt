@@ -1,4 +1,5 @@
 @file:Suppress("UNUSED_PARAMETER")
+
 package lesson3.task1
 
 import kotlin.math.sqrt
@@ -8,9 +9,11 @@ import kotlin.math.sqrt
  *
  * Вычисление факториала
  */
-fun factorial(n: Int): Double {
+fun factorial(n: Int): Double
+{
     var result = 1.0
-    for (i in 1..n) {
+    for (i in 1..n)
+    {
         result = result * i // Please do not fix in master
     }
     return result
@@ -21,11 +24,13 @@ fun factorial(n: Int): Double {
  *
  * Проверка числа на простоту -- результат true, если число простое
  */
-fun isPrime(n: Int): Boolean {
+fun isPrime(n: Int): Boolean
+{
     if (n < 2) return false
     if (n == 2) return true
     if (n % 2 == 0) return false
-    for (m in 3..sqrt(n.toDouble()).toInt() step 2) {
+    for (m in 3..sqrt(n.toDouble()).toInt() step 2)
+    {
         if (n % m == 0) return false
     }
     return true
@@ -36,9 +41,11 @@ fun isPrime(n: Int): Boolean {
  *
  * Проверка числа на совершенность -- результат true, если число совершенное
  */
-fun isPerfect(n: Int): Boolean {
+fun isPerfect(n: Int): Boolean
+{
     var sum = 1
-    for (m in 2..n/2) {
+    for (m in 2..n / 2)
+    {
         if (n % m > 0) continue
         sum += m
         if (sum > n) break
@@ -52,7 +59,8 @@ fun isPerfect(n: Int): Boolean {
  * Найти число вхождений цифры m в число n
  */
 fun digitCountInNumber(n: Int, m: Int): Int =
-        when {
+        when
+        {
             n == m -> 1
             n < 10 -> 0
             else -> digitCountInNumber(n / 10, m) + digitCountInNumber(n % 10, m)
@@ -82,7 +90,17 @@ fun fib(n: Int): Int = TODO()
  * Для заданных чисел m и n найти наименьшее общее кратное, то есть,
  * минимальное число k, которое делится и на m и на n без остатка
  */
-fun lcm(m: Int, n: Int): Int = TODO()
+fun lcm(m: Int, n: Int): Int
+{
+    var start = if (m > n) {m} else {n}
+    for (i in start.until(m*n))
+    {
+        if (i % m == 0 && i % n == 0)
+            return i
+    }
+
+    return m*n
+}
 
 /**
  * Простая
