@@ -216,7 +216,22 @@ fun squareBetweenExists(m: Int, n: Int): Boolean
  * Написать функцию, которая находит, сколько шагов требуется для
  * этого для какого-либо начального X > 0.
  */
-fun collatzSteps(x: Int): Int = TODO()
+fun collatzSteps(x: Int): Int
+{
+    var X = x
+    var counter = 0
+    do
+    {
+        if (X % 2 == 0)
+            X = X.div(2);
+        else
+            X = X * 3 + 1
+
+        counter++
+    } while (X != 1)
+
+    return if (x == 1) 0 else counter
+}
 
 /**
  * Средняя
@@ -225,7 +240,30 @@ fun collatzSteps(x: Int): Int = TODO()
  * sin(x) = x - x^3 / 3! + x^5 / 5! - x^7 / 7! + ...
  * Нужную точность считать достигнутой, если очередной член ряда меньше eps по модулю
  */
-fun sin(x: Double, eps: Double): Double = TODO()
+fun sin(x: Double, eps: Double): Double
+{
+    var sinX = 0.0;
+
+    var firstMember = x - Math.pow(x, 3.0).div(factorial(3))
+
+    var member = firstMember
+
+    sinX += member
+
+    var sign = 1
+    var power = 5.0
+    while (Math.abs(member) > eps)
+    {
+        member = sign * (Math.pow(x, power).div(factorial(power.toInt())))
+
+        power += 2
+        sign *= (-1)
+
+        sinX += member
+    }
+
+    return sinX
+}
 
 /**
  * Средняя
