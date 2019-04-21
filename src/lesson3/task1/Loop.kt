@@ -92,14 +92,21 @@ fun fib(n: Int): Int = TODO()
  */
 fun lcm(m: Int, n: Int): Int
 {
-    var start = if (m > n) {m} else {n}
-    for (i in start.until(m*n))
+    var start = if (m > n)
+    {
+        m
+    }
+    else
+    {
+        n
+    }
+    for (i in start.until(m * n))
     {
         if (i % m == 0 && i % n == 0)
             return i
     }
 
-    return m*n
+    return m * n
 }
 
 /**
@@ -171,7 +178,27 @@ fun isCoPrime(m: Int, n: Int): Boolean
  * то есть, существует ли такое целое k, что m <= k*k <= n.
  * Например, для интервала 21..28 21 <= 5*5 <= 28, а для интервала 51..61 квадрата не существует.
  */
-fun squareBetweenExists(m: Int, n: Int): Boolean = TODO()
+fun squareBetweenExists(m: Int, n: Int): Boolean
+{
+    assert(m <= n)
+
+    try
+    {
+        for (i in 0..(n))
+        {
+            var powered = Math.pow(i.toDouble(), 2.toDouble());
+
+            if (powered in m..n)
+                return true
+        }
+    }
+    catch (e: Exception)
+    {
+
+    }
+
+    return false
+}
 
 /**
  * Средняя
