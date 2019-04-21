@@ -121,7 +121,15 @@ fun minDivisor(n: Int): Int
  *
  * Для заданного числа n > 1 найти максимальный делитель, меньший n
  */
-fun maxDivisor(n: Int): Int = TODO()
+fun maxDivisor(n: Int): Int
+{
+    var temp = 0;
+    for (i in 2..(n))
+        if (n % i == 0)
+            temp = i
+
+    return temp
+}
 
 /**
  * Простая
@@ -130,7 +138,31 @@ fun maxDivisor(n: Int): Int = TODO()
  * Взаимно простые числа не имеют общих делителей, кроме 1.
  * Например, 25 и 49 взаимно простые, а 6 и 8 -- нет.
  */
-fun isCoPrime(m: Int, n: Int): Boolean = TODO()
+fun isCoPrime(m: Int, n: Int): Boolean
+{
+    var last = 0;
+    var another = 0;
+
+    if (m > n)
+    {
+        last = m;
+        another = n;
+    }
+    else
+    {
+        last = n
+        another = m
+    }
+
+    for (i in 2..(last))
+    {
+        if (another % i == 0)
+            if (last % i == 0)
+                return false;
+    }
+
+    return true;
+}
 
 /**
  * Простая
